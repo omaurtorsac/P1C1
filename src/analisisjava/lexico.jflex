@@ -102,7 +102,7 @@ ID      = [A-Za-zñÑ]([_0-9A-Za-zñÑ]*[0-9A-Za-zñÑ])*
 DECIMAL = ENTERO"."ENTERO
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
-//CARAC   = [^""]+
+//CARACT  = [^\"]+
 %%
 
 //simbolos
@@ -142,7 +142,7 @@ ENTER   = [\ \n]
 <YYINITIAL> {INT}       { return new Symbol(sym.INT, yyline, yycolumn,yytext());}
 <YYINITIAL> {BOOLEA}    { return new Symbol(sym.BOOLEA, yyline, yycolumn,yytext());}
 <YYINITIAL> {STRIN}     { return new Symbol(sym.STRIN, yyline, yycolumn,yytext());}
-//<YYINITIAL> {CARAC}     { return new Symbol(sym.CARAC, yyline, yycolumn,yytext());}
+<YYINITIAL> {CARAC}     { return new Symbol(sym.CARAC, yyline, yycolumn,yytext());}
 <YYINITIAL> {DOUBL}     { return new Symbol(sym.DOUBL, yyline, yycolumn,yytext());}
 <YYINITIAL> {OBJEC}     { return new Symbol(sym.OBJEC, yyline, yycolumn,yytext());}
 <YYINITIAL> {VOID}      { return new Symbol(sym.VOID, yyline, yycolumn,yytext());}
@@ -177,10 +177,10 @@ ENTER   = [\ \n]
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
 <YYINITIAL> {DECIMAL}   { return new Symbol(sym.DECIMAL, yyline, yycolumn,yytext());}
 <YYINITIAL> {ID}        {return new Symbol(sym.ID, yyline, yycolumn,yytext());}
-<YYINITIAL> {CARAC}     {return new Symbol(sym.CARAC, yyline, yycolumn,yytext());}
 <YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
+//<YYINITIAL> {CARACT}     {return new Symbol(sym.CARACT, yyline, yycolumn,yytext());}
 
 
 <YYINITIAL> . {
