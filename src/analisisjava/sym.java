@@ -16,6 +16,7 @@ public class sym {
   public static final int SCANE = 46;
   public static final int ENTERO = 58;
   public static final int FINA = 28;
+  public static final int CARACT = 64;
   public static final int CASE = 41;
   public static final int EXTEN = 56;
   public static final int RESTA = 13;
@@ -136,7 +137,8 @@ public class sym {
   "DECIMAL",
   "SPACE",
   "ENTER",
-  "CADENA"
+  "CADENA",
+  "CARACT"
   };
 }
 

@@ -102,7 +102,7 @@ ID      = [A-Za-zñÑ]([_0-9A-Za-zñÑ]*[0-9A-Za-zñÑ])*
 DECIMAL = ENTERO"."ENTERO
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
-//CARACT  = [^\"]+
+//CARACT   = [^""]+
 %%
 
 //simbolos
@@ -181,7 +181,6 @@ ENTER   = [\ \n]
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
 //<YYINITIAL> {CARACT}     {return new Symbol(sym.CARACT, yyline, yycolumn,yytext());}
-
 
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);
