@@ -187,11 +187,11 @@ ENTER   = [\ \n]
         System.out.println(errLex);
 }
 
-<CADENA> {
+/*<CADENA> {
         [\"] { String tmp=cadena+"\""; cadena=""; yybegin(YYINITIAL);  return new Symbol(sym.CADENA, yychar,yyline,tmp); }
         [\n] {String tmp=cadena; cadena="";  
                 System.out.println("Se esperaba cierre de cadena (\")."); 
                 yybegin(YYINITIAL);
             }
         [^\"] { cadena+=yytext();}
-}
+}*/
