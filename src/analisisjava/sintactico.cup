@@ -9,15 +9,12 @@ parser code
     public String EN="";
     public int id = 0;
     public void syntax_error(Symbol s){
-        String a = "\nError R de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1);
-        ER = ER + a;
-        //System.out.println("Error R de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1)+" " + s.value);
+        System.out.println("Error R de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) +" " + s.value);
+        
     }
 
     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{ 
-        String b = "\nError R de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1);
-        EN = EN + b;
-        //System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
+        System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
     }
 
 :}
@@ -27,8 +24,8 @@ action code
     String tmp="";
     String id1 = "";
     String id2 = "";
-    int x1=0;
-    int x2=0;
+    int x1;
+    int x2;
     int y1, y2;
     int x = 0;
     int y = 0;
@@ -67,10 +64,79 @@ nonterminal VISIBILIDAD, EXPRESIONES, DECLARACION, LISTAID;
 
 
 //agregamos la precedencia
-//precedence left COMA;
-//precedence left SUMA, RESTA;
-//precedence left MULTI, DIVIS, MODS; 
+precedence left COMA;
+precedence left SUMA, RESTA;
+precedence left MULTI, DIVIS, MODS; 
 
 start with INICIO;
 
-INICIO ::= IMPOR;
+INICIO ::= A1;
+
+A1 ::= IMPOR IMPORTS PYCOMA A1 | A2;
+
+A2 ::= VISIBILIDAD CLASS ID A3 LLAV_A EXPRESIONES LLAV_C;
+
+A3 ::= EXTEN IMPORTS| error | ;
+
+IMPORTS ::= IMPORTS PUNTO ID|
+            ID;
+
+EXPRESIONES ::= DECLARACION EXPRESIONES|
+                COMENTL EXPRESIONES|
+                COMENTM EXPRESIONES|
+                error|
+                ;
+
+DECLARACION ::= VISIBILIDAD TIPO LISTAID A4 PYCOMA;
+
+A4 ::=  IGUAL ASIGNA | error | ;
+
+COMENTL ::= DIVIS DIVIS CARAC;
+
+COMENTM ::= DIVIS MULTI VIENE DIVIS MULTI;
+
+VIENE ::= ENTER VIENE| SPACE VIENE| CARAC VIENE;
+
+LISTAID ::= LISTAID COMA ID | ID;
+
+VISIBILIDAD ::= PRIVAT|
+                PUBLI|
+                PROTEC|
+                FINA|
+                error
+                ;
+
+TIPO ::=    INT|
+            BOOLEA|
+            STRIN|
+            CARAC|
+            DOUBL|
+            OBJEC|
+            VOID|
+            error
+            ;
+
+
+//asignacion de parametros
+ASIGNA ::= IMPORTS PAR_A PAR1 PAR_C | VALORES;
+
+OPERACION ::=   SUMA |
+                RESTA|
+                DIVIS|
+                MULTI|
+                MODS;
+
+PARAMETRO1 ::=  RESTA PARAMETRO1|
+                PAR_A PARAMETRO1 PAR_C|
+                PARAMETRO1 OPERACION PARAMETRO1|
+                PARAMETRO1 COMA PARAMETRO1| 
+                VALORES;
+
+
+PAR1 ::= PARAMETRO1 | error | ;
+
+PAR2 ::= PARAMETRO2 PAR2| error | ;
+
+PARAMETRO2 ::= TIPO ID COMA;
+
+VALORES ::= ENTERO | DECIMAL | ID | CADENA;

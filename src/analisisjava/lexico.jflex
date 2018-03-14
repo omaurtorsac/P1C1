@@ -3,12 +3,12 @@ package analisisjava;
 import java_cup.runtime.Symbol;
 
 
-%%
 
+%%
 
 %{
     //Código de usuario
-    public String cadena= "";
+    String cadena= "";
 %}
 
 %cup
@@ -182,9 +182,10 @@ ENTER   = [\ \n]
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
 
+
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);
-        cadena = cadena + errLex+"\n";
+        System.out.println(errLex);
 }
 
 <CADENA> {
