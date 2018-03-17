@@ -58,11 +58,15 @@ nonterminal String INICIO, A1, IMPORTS, A2, A3, ASIGNA, E, A5;
 
 nonterminal A4, PARAMETRO1, PARAMETRO2, PAR1 , PAR2, OTRO, OPERACION;
 
+nonterminal PAR11;
+
 nonterminal String TIPO, COMENTL, COMENTM, COMENTARIOS, VIENE, VALORES;
 
-nonterminal VISIBILIDAD, EXPRESIONES, DECLARACION, LISTAID, DECLA2, EXPRE2;
+nonterminal String TIPO2;
 
-nonterminal BREAKS, RETURNS;
+nonterminal VISIBILIDAD, EXPRESIONES, DECLARACION, LISTAID, DECLA2, EXPRE2, EXPRE3;
+
+nonterminal BREAKS, RETURNS, SWITCHS;
 
 //agregamos la precedencia
 precedence left COMA;
@@ -92,15 +96,23 @@ RETURNS ::= RETUR | error |;
 
 BREAKS ::=  BREAK | error |;
 
-DECLA2 ::=  VISIBILIDAD TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 LLAV_C|
-            TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 LLAV_C|
-            ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 LLAV_C;
+DECLA2 ::=  VISIBILIDAD TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C|
+            TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C|
+            ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C;
 
 EXPRE2 ::=  DECLA2 EXPRE2|
             COMENTARIOS EXPRE2|
-            error|;
+            SWITCHS EXPRE2|;
+            //error|;
 
-DECLA2 ::= TIPO LISTAID A4 PYCOMA;
+SWITCHS ::= SWITCH PAR_A PAR11 PAR_C;
+
+PAR11 ::= PARAMETRO1 | error;
+
+EXPRE3 ::= ;
+
+DECLA2 ::= TIPO2 LISTAID A4 PYCOMA;
+
 
 
 DECLARACION ::= VISIBILIDAD TIPO LISTAID A4 PYCOMA;
@@ -120,8 +132,7 @@ LISTAID ::= LISTAID COMA ID | ID;
 VISIBILIDAD ::= PRIVAT|
                 PUBLI|
                 PROTEC|
-                FINA|
-                error
+                FINA
                 ;
 
 TIPO ::=    INT|
@@ -130,10 +141,8 @@ TIPO ::=    INT|
             CARAC|
             DOUBL|
             OBJEC|
-            VOID|
-            error
+            VOID
             ;
-
 
 //asignacion de parametros
 ASIGNA ::= IMPORTS PAR_A PAR1 PAR_C | VALORES;
@@ -146,8 +155,9 @@ OPERACION ::=   SUMA |
 
 PARAMETRO1 ::=  RESTA PARAMETRO1|
                 PAR_A PARAMETRO1 PAR_C|
+                ID PAR_A PARAMETRO1 PAR_C|
                 PARAMETRO1 OPERACION PARAMETRO1|
-                PARAMETRO1 COMA PARAMETRO1| 
+                PARAMETRO1 COMA PARAMETRO1|
                 VALORES;
 
 
@@ -157,4 +167,4 @@ PAR2 ::= PARAMETRO2 PAR2| error | ;
 
 PARAMETRO2 ::= TIPO ID COMA| TIPO ID;
 
-VALORES ::= ENTERO | DECIMAL | ID | CADENA;
+VALORES ::= ENTERO | DECIMAL | ID | CADENA| TRU | FALS;
