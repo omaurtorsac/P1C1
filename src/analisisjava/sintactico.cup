@@ -49,7 +49,7 @@ terminal String IF, ELSE, DO, WHILE, SWITCH;
 
 //reservadas
 terminal String CASE, BREAK, IMPOR, CLASS, RETUR, SCANE, NEXTL, NEXTI;
-terminal String SYSTE, OUT, PRINT, INTEG, PARSI, PARSF, FLOAT, EXTEN, STATI;
+terminal String SYSTE, OUT, PRINT, INTEG, PARSI, PARSF, FLOAT, EXTEN, STATI, DEFAU;
 
 //expresiones
 terminal String ENTERO, ID, DECIMAL, SPACE, ENTER, CADENA;//, CARACT;
@@ -68,7 +68,10 @@ nonterminal VISIBILIDAD, EXPRESIONES, DECLARACION, LISTAID, DECLA2, EXPRE2, EXPR
 
 nonterminal BREAKS, RETURNS, SWITCHS, DEF, CASO, BRE;
 
+nonterminal COND, REL, OPREL, OIF, EXIF, EXIFE, EXEL;
+
 //agregamos la precedencia
+precedence left AND, OR;
 precedence left COMA;
 precedence left SUMA, RESTA;
 precedence left MULTI, DIVIS, MODS; 
@@ -100,16 +103,34 @@ DECLA2 ::=  VISIBILIDAD TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C|
 
 EXPRE2 ::=  DECLA2 EXPRE2|
             COMENTARIOS EXPRE2|
-            SWITCHS EXPRE2|;
+            SWITCHS EXPRE2|
+            EXIF EXPRE2|;
             //error|;
 
-SWITCHS ::= SWITCH PAR_A PAR11 PAR_C LLAV_A A5 LLAV_C;
+EXIF ::=    IF PAR_A COND PAR_C LLAV_A EXPRE2 RETURNS LLAV_C;
 
-A5 ::=  A5 CASO | CASO;
+COND ::=    COND OR COND|
+            COND AND COND|
+            REL;
+
+REL ::= PARAMETRO1 OPREL PARAMETRO1;
+
+OPREL ::=   MAYOR|
+            MENOR|
+            IGUAL IGUAL|
+            NOT IGUAL|
+            MAYOR IGUAL|
+            MENOR IGUAL;
+
+SWITCHS ::= SWITCH PAR_A PAR11 PAR_C LLAV_A A5 DEF LLAV_C;
+
+A5 ::=  A5 CASO | CASO ;
 
 BRE ::= BREAK | ;
 
 CASO ::=    CASE VALORES DOSPU EXPRE2 BRE PYCOMA;
+
+DEF ::= DEFAU DOSPU EXPRE2 BRE PYCOMA |;
 
 PAR11 ::= PARAMETRO1 | error;
 
