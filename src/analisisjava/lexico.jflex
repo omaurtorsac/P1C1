@@ -75,6 +75,7 @@ ELSE    = "else"
 DO      = "do"
 WHILE   = "while"
 SWITCH  = "switch"
+FOR     = "for"
 
 //reservadas
 CASE    = "case"
@@ -153,6 +154,7 @@ ENTER   = [\ \n]
 <YYINITIAL> {DO}        { return new Symbol(sym.DO, yyline, yycolumn,yytext());}
 <YYINITIAL> {WHILE}     { return new Symbol(sym.WHILE, yyline, yycolumn,yytext());}
 <YYINITIAL> {SWITCH}    { return new Symbol(sym.SWITCH, yyline, yycolumn,yytext());}
+<YYINITIAL> {FOR}       { return new Symbol(sym.FOR, yyline, yycolumn,yytext());}
 
 //reservadas
 <YYINITIAL> {CASE}      { return new Symbol(sym.CASE, yyline, yycolumn,yytext());}

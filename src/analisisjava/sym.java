@@ -8,48 +8,49 @@ package analisisjava;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int SPACE = 62;
-  public static final int ENTER = 63;
-  public static final int INTEG = 52;
-  public static final int STATI = 57;
-  public static final int SYSTE = 49;
-  public static final int SCANE = 46;
-  public static final int ENTERO = 59;
+  public static final int SPACE = 63;
+  public static final int ENTER = 64;
+  public static final int INTEG = 53;
+  public static final int STATI = 58;
+  public static final int SYSTE = 50;
+  public static final int SCANE = 47;
+  public static final int ENTERO = 60;
   public static final int FINA = 28;
-  public static final int CASE = 41;
-  public static final int EXTEN = 56;
+  public static final int CASE = 42;
+  public static final int EXTEN = 57;
   public static final int RESTA = 13;
   public static final int INT = 29;
   public static final int DOSPU = 10;
-  public static final int OUT = 50;
+  public static final int OUT = 51;
+  public static final int FOR = 41;
   public static final int NOT = 24;
   public static final int AND = 22;
   public static final int IGUAL = 19;
   public static final int PROTEC = 27;
   public static final int OR = 23;
-  public static final int CLASS = 44;
+  public static final int CLASS = 45;
   public static final int MODS = 14;
   public static final int SUMA = 12;
-  public static final int PARSI = 53;
+  public static final int PARSI = 54;
   public static final int IF = 36;
   public static final int LLAV_C = 5;
-  public static final int ID = 60;
-  public static final int PARSF = 54;
+  public static final int ID = 61;
+  public static final int PARSF = 55;
   public static final int LLAV_A = 4;
   public static final int PYCOMA = 9;
-  public static final int DECIMAL = 61;
+  public static final int DECIMAL = 62;
   public static final int EOF = 0;
-  public static final int DEFAU = 58;
+  public static final int DEFAU = 59;
   public static final int error = 1;
   public static final int FALS = 21;
   public static final int COMA = 8;
-  public static final int CADENA = 64;
-  public static final int RETUR = 45;
-  public static final int NEXTL = 47;
+  public static final int CADENA = 65;
+  public static final int RETUR = 46;
+  public static final int NEXTL = 48;
   public static final int MENOR = 18;
   public static final int PAR_C = 3;
-  public static final int NEXTI = 48;
-  public static final int BREAK = 42;
+  public static final int NEXTI = 49;
+  public static final int BREAK = 43;
   public static final int PAR_A = 2;
   public static final int VOID = 35;
   public static final int TRU = 20;
@@ -60,18 +61,18 @@ public class sym {
   public static final int OBJEC = 34;
   public static final int DIVIS = 16;
   public static final int ELSE = 37;
-  public static final int IMPOR = 43;
+  public static final int IMPOR = 44;
   public static final int PUNTO = 11;
   public static final int WHILE = 39;
   public static final int PRIVAT = 25;
   public static final int PUBLI = 26;
-  public static final int FLOAT = 55;
+  public static final int FLOAT = 56;
   public static final int MULTI = 15;
   public static final int BOOLEA = 30;
   public static final int COR_C = 7;
   public static final int COR_A = 6;
   public static final int CARAC = 32;
-  public static final int PRINT = 51;
+  public static final int PRINT = 52;
   public static final int DO = 38;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -115,6 +116,7 @@ public class sym {
   "DO",
   "WHILE",
   "SWITCH",
+  "FOR",
   "CASE",
   "BREAK",
   "IMPOR",
