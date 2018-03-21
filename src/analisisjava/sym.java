@@ -8,13 +8,13 @@ package analisisjava;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int SPACE = 63;
-  public static final int ENTER = 64;
+  public static final int SPACE = 64;
+  public static final int ENTER = 65;
   public static final int INTEG = 53;
   public static final int STATI = 58;
   public static final int SYSTE = 50;
   public static final int SCANE = 47;
-  public static final int ENTERO = 60;
+  public static final int ENTERO = 61;
   public static final int FINA = 28;
   public static final int CASE = 42;
   public static final int EXTEN = 57;
@@ -34,17 +34,18 @@ public class sym {
   public static final int PARSI = 54;
   public static final int IF = 36;
   public static final int LLAV_C = 5;
-  public static final int ID = 61;
+  public static final int ID = 62;
   public static final int PARSF = 55;
   public static final int LLAV_A = 4;
   public static final int PYCOMA = 9;
-  public static final int DECIMAL = 62;
+  public static final int DECIMAL = 63;
   public static final int EOF = 0;
   public static final int DEFAU = 59;
+  public static final int NEW = 60;
   public static final int error = 1;
   public static final int FALS = 21;
   public static final int COMA = 8;
-  public static final int CADENA = 65;
+  public static final int CADENA = 66;
   public static final int RETUR = 46;
   public static final int NEXTL = 48;
   public static final int MENOR = 18;
@@ -135,6 +136,7 @@ public class sym {
   "EXTEN",
   "STATI",
   "DEFAU",
+  "NEW",
   "ENTERO",
   "ID",
   "DECIMAL",

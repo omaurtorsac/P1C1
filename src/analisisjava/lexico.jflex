@@ -96,6 +96,7 @@ FLOAT   = "Flaot"
 EXTEN   = "extends"
 STATI   = "static"
 DEFAU   = "default"
+NEW     = "new"
 
 //expresiones
 ENTERO  = ("-")?[0-9]+
@@ -175,6 +176,7 @@ ENTER   = [\ \n]
 <YYINITIAL> {EXTEN}     { return new Symbol(sym.EXTEN, yyline, yycolumn,yytext());}
 <YYINITIAL> {STATI}     { return new Symbol(sym.STATI, yyline, yycolumn,yytext());}
 <YYINITIAL> {DEFAU}     { return new Symbol(sym.DEFAU, yyline, yycolumn,yytext());}
+<YYINITIAL> {NEW}       { return new Symbol(sym.NEW, yyline, yycolumn,yytext());}
 
 //expresiones
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}

@@ -49,7 +49,7 @@ terminal String IF, ELSE, DO, WHILE, SWITCH, FOR;
 
 //reservadas
 terminal String CASE, BREAK, IMPOR, CLASS, RETUR, SCANE, NEXTL, NEXTI;
-terminal String SYSTE, OUT, PRINT, INTEG, PARSI, PARSF, FLOAT, EXTEN, STATI, DEFAU;
+terminal String SYSTE, OUT, PRINT, INTEG, PARSI, PARSF, FLOAT, EXTEN, STATI, DEFAU, NEW;
 
 //expresiones
 terminal String ENTERO, ID, DECIMAL, SPACE, ENTER, CADENA;//, CARACT;
@@ -70,6 +70,8 @@ nonterminal RETURNS, SWITCHS, DEF, CASO, BRE;
 
 nonterminal COND, REL, OPREL, OIF, OE, EXIF, EXIFE, EXEL;
 
+nonterminal PRINTF, ASIGNA2, B1, STAT, B2;
+
 //parawhile
 nonterminal EXWHI, EXDO;
 
@@ -78,6 +80,7 @@ nonterminal OFOR, EXPRE4 ;
 //agregamos la precedencia
 precedence left AND, OR;
 precedence left COMA;
+precedence left PUNTO;
 precedence left SUMA, RESTA;
 precedence left MULTI, DIVIS, MODS; 
 
@@ -104,7 +107,8 @@ RETURNS ::= RETUR|;
 
 DECLA2 ::=  VISIBILIDAD TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C|
             TIPO ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C|
-            ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C;
+            ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C|
+            VISIBILIDAD ID PAR_A PAR2 PAR_C LLAV_A EXPRE2 RETURNS LLAV_C;
 
 EXPRE2 ::=  DECLA2 EXPRE2|
             COMENTARIOS EXPRE2|
@@ -112,8 +116,27 @@ EXPRE2 ::=  DECLA2 EXPRE2|
             EXIF EXPRE2|
             OFOR EXPRE2 |
             EXDO EXPRE2 |
-            EXWHI EXPRE2|;
+            EXWHI EXPRE2|
+            PRINTF EXPRE2|
+            ASIGNA2 EXPRE2|;
             //error|;
+
+
+ASIGNA2 ::= ID OTRO PYCOMA;
+
+OTRO ::=    A4| IGUAL B1;
+        
+B1 ::=  //INTEG PUNTO PARSI|
+        //FLOAT PUNTO PARSF|
+        IMPORTS PUNTO B2;
+
+B2 ::=  PARSI|
+        PARSF|
+        EXPRE4 PAR_A ID PAR_C;
+
+EXPRE4 ::= NEXTL | NEXTI;
+
+PRINTF ::= SYSTE PUNTO OUT PUNTO PRINT PAR_A PAR1 PAR_C PYCOMA;
 
 EXIF ::=    IF PAR_A COND PAR_C LLAV_A EXPRE2 RETURNS LLAV_C OIF OE;
 
@@ -155,7 +178,7 @@ DEF ::= DEFAU DOSPU EXPRE2 BRE PYCOMA |;
 
 PAR11 ::= PARAMETRO1 | error;
 
-DECLA2 ::= TIPO LISTAID A4 PYCOMA;
+DECLA2 ::=  TIPO LISTAID A4 PYCOMA;
 
 DECLARACION ::= VISIBILIDAD TIPO LISTAID A4 PYCOMA;
 
@@ -187,7 +210,7 @@ TIPO ::=    INT|
             ;
 
 //asignacion de parametros
-ASIGNA ::= IMPORTS PAR_A PAR1 PAR_C | VALORES;
+ASIGNA ::= IMPORTS PAR_A PAR1 PAR_C | NEW IMPORTS PAR_A PAR1 PAR_C |VALORES;
 
 OPERACION ::=   SUMA |
                 RESTA|
@@ -198,6 +221,7 @@ OPERACION ::=   SUMA |
 PARAMETRO1 ::=  RESTA PARAMETRO1|
                 PAR_A PARAMETRO1 PAR_C|
                 ID PAR_A PARAMETRO1 PAR_C|
+                ID COR_A PAR1 COR_C |
                 PARAMETRO1 OPERACION PARAMETRO1|
                 PARAMETRO1 COMA PARAMETRO1|
                 VALORES;
