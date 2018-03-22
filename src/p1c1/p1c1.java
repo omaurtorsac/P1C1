@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class p1c1 extends javax.swing.JFrame {
-
+    
     public p1c1() {
         initComponents();
     }
