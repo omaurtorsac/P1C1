@@ -15,7 +15,7 @@ public class GeneradorDeCompiladores {
     
     private static void generarCompilador(){
         try {
-            String ruta = "src/analisisjava/"; //ruta donde tenemos los archivos con extension .jflex y .cup
+            String ruta = "src/analisisjson/"; //ruta donde tenemos los archivos con extension .jflex y .cup
             String opcFlex[] = { ruta + "lexico.jflex", "-d", ruta };
             JFlex.Main.generate(opcFlex);
             String opcCUP[] = { "-destdir", ruta, "-parser", "parser", ruta + "sintactico.cup" };
