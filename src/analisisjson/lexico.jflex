@@ -49,6 +49,7 @@ NOMBRE  = "Nombre"
 COMENT  = "Comentarios"
 TEXTO   = "Texto"
 PARAME  = "Parametros"
+METODO  = "Metodos"
 
 //expresiones
 ENTERO  = ("-")?[0-9]+
@@ -88,6 +89,7 @@ CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|
 <YYINITIAL> {COMENT}    { return new Symbol(sym.COMENT, yyline, yycolumn,yytext());}
 <YYINITIAL> {TEXTO}     { return new Symbol(sym.TEXTO, yyline, yycolumn,yytext());}
 <YYINITIAL> {PARAME}    { return new Symbol(sym.PARAME, yyline, yycolumn,yytext());}
+<YYINITIAL> {METODO}    { return new Symbol(sym.METODO, yyline, yycolumn,yytext());}
 
 //expresiones
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
