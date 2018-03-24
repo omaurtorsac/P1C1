@@ -28,8 +28,7 @@ COR_A   = "["
 COR_C   = "]"
 COMA    = ","
 DOSPU   = ":"
-PUNTO   = "."
-IGUAL   = "="
+COMIL   = "\""
 
 //Tipo de Datos
 INT     = "int"
@@ -42,6 +41,7 @@ VOID    = "void"
 
 //reservadas
 TIPO    = "Tipo"
+SCORE   = "score"
 CLASES  = "Clases"
 VARIAB  = "Variables"
 CLASE   = "Clase"
@@ -67,6 +67,7 @@ CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|
 <YYINITIAL> {COR_C}     { return new Symbol(sym.COR_C, yyline, yycolumn,yytext());}
 <YYINITIAL> {COMA}      { return new Symbol(sym.COMA, yyline, yycolumn,yytext());}
 <YYINITIAL> {DOSPU}     { return new Symbol(sym.DOSPU, yyline, yycolumn,yytext());}
+<YYINITIAL> {COMIL}     { return new Symbol(sym.COMIL, yyline, yycolumn,yytext());}
 
 //Tipo de Datos
 <YYINITIAL> {INT}       { return new Symbol(sym.INT, yyline, yycolumn,yytext());}
@@ -79,6 +80,7 @@ CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|
 
 //reservadas
 <YYINITIAL> {TIPO}      { return new Symbol(sym.TIPO, yyline, yycolumn,yytext());}
+<YYINITIAL> {SCORE}     { return new Symbol(sym.SCORE, yyline, yycolumn,yytext());}
 <YYINITIAL> {CLASES}    { return new Symbol(sym.CLASES, yyline, yycolumn,yytext());}
 <YYINITIAL> {VARIAB}    { return new Symbol(sym.VARIAB, yyline, yycolumn,yytext());}
 <YYINITIAL> {CLASE}     { return new Symbol(sym.CLASE, yyline, yycolumn,yytext());}
