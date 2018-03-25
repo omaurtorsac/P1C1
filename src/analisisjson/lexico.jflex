@@ -54,11 +54,11 @@ METODO  = "Metodos"
 //expresiones
 ENTERO  = ("-")?[0-9]+
 ID      = [A-Za-zñÑ]([_0-9A-Za-zñÑ]*[0-9A-Za-zñÑ])*
-DECIMAL = ENTERO"."ENTERO
+DECIMAL = {ENTERO}"."{ENTERO}
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
 //CARACT   = [^""]+
-CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|"*"|"+"|"?"|"^"|"$"|"/"|","|"~"|"!"|"="|"")+
+//CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|"*"|"+"|"?"|"^"|"$"|"/"|","|"~"|"!"|"="|"")+
 %%
 
 //simbolos
@@ -95,10 +95,11 @@ CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
 <YYINITIAL> {DECIMAL}   { return new Symbol(sym.DECIMAL, yyline, yycolumn,yytext());}
 <YYINITIAL> {ID}        {return new Symbol(sym.ID, yyline, yycolumn,yytext());}
-<YYINITIAL> {CONT}      {return new Symbol(sym.CONT, yyline, yycolumn,yytext());}
+
 //<YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
+//<YYINITIAL> {CONT}      {return new Symbol(sym.CONT, yyline, yycolumn,yytext());}
 
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);
@@ -107,11 +108,10 @@ CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|
 
 /*<CADENA> {
         [\"] { String tmp=cadena+"\""; cadena=""; yybegin(YYINITIAL);  return new Symbol(sym.CADENA, yychar,yyline,tmp); }
-        
-        [^\"] { cadena+=yytext();}
-}*/
-
-/*[\n] {String tmp=cadena; cadena="";  
+        [\n] {String tmp=cadena; cadena="";  
                 System.out.println("Se esperaba cierre de cadena (\")."); 
                 yybegin(YYINITIAL);
-            }*/
+            }
+        [^\"] { cadena+=yytext();}
+}
+*/

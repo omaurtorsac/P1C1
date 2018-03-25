@@ -2,6 +2,8 @@ package p1c1;
 
 import analisisjava.parser;
 import analisisjava.scanner;
+import analisisjson.parserj;
+import analisisjson.scannerj;
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.logging.Level;
@@ -63,8 +65,9 @@ public class p1c1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String text = jTextArea1.getText();
-        scanner lex = new scanner(new BufferedReader(new StringReader(text)));
-        parser par = new parser(lex);
+        
+        scannerj lex = new scannerj(new BufferedReader(new StringReader(text)));
+        parserj par = new parserj(lex);
         try{
             par.parse();
         } catch (Exception ex) {

@@ -18,7 +18,7 @@ public class GeneradorDeCompiladores {
             String ruta = "src/analisisjson/"; //ruta donde tenemos los archivos con extension .jflex y .cup
             String opcFlex[] = { ruta + "lexico.jflex", "-d", ruta };
             JFlex.Main.generate(opcFlex);
-            String opcCUP[] = { "-destdir", ruta, "-parser", "parser", ruta + "sintactico.cup" };
+            String opcCUP[] = { "-destdir", ruta, "-parser", "parserj", ruta + "sintactico.cup" };
             java_cup.Main.main(opcCUP);
         } catch (Exception e) {
             e.printStackTrace();

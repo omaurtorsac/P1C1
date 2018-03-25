@@ -25,7 +25,6 @@ public class sym {
   public static final int CLASE = 20;
   public static final int SPACE = 29;
   public static final int COR_A = 4;
-  public static final int CONT = 32;
   public static final int COMA = 6;
   public static final int METODO = 25;
   public static final int NOMBRE = 21;
@@ -73,8 +72,7 @@ public class sym {
   "DECIMAL",
   "SPACE",
   "ENTER",
-  "CADENA",
-  "CONT"
+  "CADENA"
   };
 }
 
