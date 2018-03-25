@@ -31,6 +31,7 @@ public class sym {
   public static final int EOF = 0;
   public static final int OBJEC = 14;
   public static final int DOUBL = 13;
+  public static final int COMENTL = 32;
   public static final int PARAME = 24;
   public static final int TEXTO = 23;
   public static final int COMENT = 22;
@@ -72,7 +73,8 @@ public class sym {
   "DECIMAL",
   "SPACE",
   "ENTER",
-  "CADENA"
+  "CADENA",
+  "COMENTL"
   };
 }
 

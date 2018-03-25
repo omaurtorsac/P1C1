@@ -28,16 +28,15 @@ COR_A   = "["
 COR_C   = "]"
 COMA    = ","
 DOSPU   = ":"
-COMIL   = "\""
 
 //Tipo de Datos
-INT     = "int"
-BOOLEA  = "boolean"
-STRIN   = "String"
-CARAC   = "char"
-DOUBL   = "double"
-OBJEC   = "Object"
-VOID    = "void"
+INT     = ("\"")?"int"("\"")?
+BOOLEA  = ("\"")?"boolean"("\"")?
+STRIN   = ("\"")?"String"("\"")?
+CARAC   = ("\"")?"char"("\"")?
+DOUBL   = ("\"")?"double"("\"")?
+OBJEC   = ("\"")?"Object"("\"")?
+VOID    = ("\"")?"void"("\"")?
 
 //reservadas
 TIPOS    = "Tipo"
@@ -52,13 +51,15 @@ PARAME  = "Parametros"
 METODO  = "Metodos"
 
 //expresiones
-ENTERO  = ("-")?[0-9]+
-ID      = [A-Za-zñÑ]([_0-9A-Za-zñÑ]*[0-9A-Za-zñÑ])*
-DECIMAL = {ENTERO}"."{ENTERO}
+ENTERO  = ("\"")?("-")?[0-9]+("\"")?
+ID      = ("\"")?[A-Za-zñÑ]([_0-9A-Za-zñÑ]*[0-9A-Za-zñÑ])("\"")?
+DECIMAL = ("\"")?{ENTERO}"."{ENTERO}("\"")?
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
-//CARACT   = [^""]+
-//CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|"*"|"+"|"?"|"^"|"$"|"/"|","|"~"|"!"|"="|"")+
+
+//InputCharacter = [^\r\n]
+//LineTerminator = \r|\n|\r\n
+//COMENTL = {InputCharacter}
 %%
 
 //simbolos
@@ -68,7 +69,7 @@ ENTER   = [\ \n]
 <YYINITIAL> {COR_C}     { return new Symbol(sym.COR_C, yyline, yycolumn,yytext());}
 <YYINITIAL> {COMA}      { return new Symbol(sym.COMA, yyline, yycolumn,yytext());}
 <YYINITIAL> {DOSPU}     { return new Symbol(sym.DOSPU, yyline, yycolumn,yytext());}
-<YYINITIAL> {COMIL}     { return new Symbol(sym.COMIL, yyline, yycolumn,yytext());}
+//<YYINITIAL> {COMIL}     { return new Symbol(sym.COMIL, yyline, yycolumn,yytext());}
 
 //Tipo de Datos
 <YYINITIAL> {INT}       { return new Symbol(sym.INT, yyline, yycolumn,yytext());}
@@ -95,18 +96,18 @@ ENTER   = [\ \n]
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
 <YYINITIAL> {DECIMAL}   { return new Symbol(sym.DECIMAL, yyline, yycolumn,yytext());}
 <YYINITIAL> {ID}        {return new Symbol(sym.ID, yyline, yycolumn,yytext());}
-
-//<YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
+<YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
-//<YYINITIAL> {CONT}      {return new Symbol(sym.CONT, yyline, yycolumn,yytext());}
-
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);
         System.out.println(errLex);
 }
+//<YYINITIAL> {COMENTL}       {return new Symbol(sym.COMENTL, yyline, yycolumn,yytext());}
 
-/*<CADENA> {
+
+
+<CADENA> {
         [\"] { String tmp=cadena+"\""; cadena=""; yybegin(YYINITIAL);  return new Symbol(sym.CADENA, yychar,yyline,tmp); }
         [\n] {String tmp=cadena; cadena="";  
                 System.out.println("Se esperaba cierre de cadena (\")."); 
@@ -114,4 +115,3 @@ ENTER   = [\ \n]
             }
         [^\"] { cadena+=yytext();}
 }
-*/

@@ -105,6 +105,12 @@ DECIMAL = ENTERO"."ENTERO
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
 //CARACT   = [^""]+
+COMENTM = "/*" [^*] ~"*/" | "/*" "*"+ "/"
+InputCharacter = [^\r\n]
+LineTerminator = \r|\n|\r\n
+COMENTL = "//" {InputCharacter}* {LineTerminator}?
+
+COMENTARIO = {COMENTL} | {COMENTM}
 %%
 
 //simbolos
@@ -185,7 +191,8 @@ ENTER   = [\ \n]
 <YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
-//<YYINITIAL> {CARACT}     {return new Symbol(sym.CARACT, yyline, yycolumn,yytext());}
+<YYINITIAL> {COMENTARIO} {return new Symbol(sym.COMENTARIO, yyline, yycolumn,yytext());}
+
 
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);

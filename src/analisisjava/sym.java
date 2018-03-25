@@ -47,6 +47,7 @@ public class sym {
   public static final int COMA = 8;
   public static final int CADENA = 66;
   public static final int RETUR = 46;
+  public static final int COMENTARIO = 67;
   public static final int NEXTL = 48;
   public static final int MENOR = 18;
   public static final int PAR_C = 3;
@@ -142,7 +143,8 @@ public class sym {
   "DECIMAL",
   "SPACE",
   "ENTER",
-  "CADENA"
+  "CADENA",
+  "COMENTARIO"
   };
 }
 
