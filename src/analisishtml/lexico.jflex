@@ -1,4 +1,4 @@
-package analisisjson;
+package analisishtml;
 
 import java_cup.runtime.Symbol;
 
@@ -12,7 +12,7 @@ import java_cup.runtime.Symbol;
 %}
 
 %cup
-%class scannerj
+%class scannerh
 %public
 %line
 %char
