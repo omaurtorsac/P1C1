@@ -105,8 +105,6 @@ ENTER   = [\ \n]
 }
 //<YYINITIAL> {COMENTL}       {return new Symbol(sym.COMENTL, yyline, yycolumn,yytext());}
 
-
-
 <CADENA> {
         [\"] { String tmp=cadena+"\""; cadena=""; yybegin(YYINITIAL);  return new Symbol(sym.CADENA, yychar,yyline,tmp); }
         [\n] {String tmp=cadena; cadena="";  
