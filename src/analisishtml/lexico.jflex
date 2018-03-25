@@ -22,14 +22,40 @@ import java_cup.runtime.Symbol;
 %ignorecase
 
 //simbolos
+PAR_A   = "("
+PAR_C   = ")"
 LLAV_A  = "{"
 LLAV_C  = "}"
 COR_A   = "["
 COR_C   = "]"
 COMA    = ","
+PYCOMA  = ";"
 DOSPU   = ":"
+PUNTO   = "."
+SUMA    = "+"
+RESTA   = "-"
+MODS    = "%"
+MULTI   = "*"
+DIVIS   = "/"
+MAYOR   = ">"
+MENOR   = "<"
+IGUAL   = "="
+CLOSE   = "/>"
 
-//Tipo de Datos
+//logicos
+TRU     = "true"
+FALS    = "false"
+AND     = "&&"
+OR      = "||"
+NOT     = "!"
+
+
+//etiquetas
+HTML_I  = "<html>"
+HTML_F  = "</html>"
+HEAD_I  = "<head>"
+HEAD_F  = "</head>"
+
 INT     = ("\"")?"int"("\"")?
 BOOLEA  = ("\"")?"boolean"("\"")?
 STRIN   = ("\"")?"String"("\"")?
@@ -39,6 +65,7 @@ OBJEC   = ("\"")?"Object"("\"")?
 VOID    = ("\"")?"void"("\"")?
 
 //reservadas
+RESULT  = "RESULT"
 TIPOS    = "Tipo"
 SCORE   = "score"
 CLASES  = "Clases"
