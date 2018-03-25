@@ -12,7 +12,7 @@ import java_cup.runtime.Symbol;
 %}
 
 %cup
-%class scanner
+%class scannerj
 %public
 %line
 %char
@@ -40,7 +40,7 @@ OBJEC   = "Object"
 VOID    = "void"
 
 //reservadas
-TIPO    = "Tipo"
+TIPOS    = "Tipo"
 SCORE   = "score"
 CLASES  = "Clases"
 VARIAB  = "Variables"
@@ -80,7 +80,7 @@ CONT = ("_"|[a-zA-ZñÑ]|" "|[0-9]|"|"|"("|")"|"{"|"}"|"["|"]"|"<"|">"|"\\"|"."|
 <YYINITIAL> {VOID}      { return new Symbol(sym.VOID, yyline, yycolumn,yytext());}
 
 //reservadas
-<YYINITIAL> {TIPO}      { return new Symbol(sym.TIPO, yyline, yycolumn,yytext());}
+<YYINITIAL> {TIPOS}      { return new Symbol(sym.TIPOS, yyline, yycolumn,yytext());}
 <YYINITIAL> {SCORE}     { return new Symbol(sym.SCORE, yyline, yycolumn,yytext());}
 <YYINITIAL> {CLASES}    { return new Symbol(sym.CLASES, yyline, yycolumn,yytext());}
 <YYINITIAL> {VARIAB}    { return new Symbol(sym.VARIAB, yyline, yycolumn,yytext());}

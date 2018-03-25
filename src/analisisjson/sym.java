@@ -9,6 +9,7 @@ package analisisjson;
 public class sym {
   /* terminals */
   public static final int DOSPU = 7;
+  public static final int TIPOS = 16;
   public static final int CARAC = 12;
   public static final int BOOLEA = 10;
   public static final int CADENA = 31;
@@ -25,7 +26,6 @@ public class sym {
   public static final int SPACE = 29;
   public static final int COR_A = 4;
   public static final int CONT = 32;
-  public static final int TIPO = 16;
   public static final int COMA = 6;
   public static final int METODO = 25;
   public static final int NOMBRE = 21;
@@ -58,7 +58,7 @@ public class sym {
   "DOUBL",
   "OBJEC",
   "VOID",
-  "TIPO",
+  "TIPOS",
   "SCORE",
   "CLASES",
   "VARIAB",
