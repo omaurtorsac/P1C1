@@ -95,11 +95,11 @@ ALIGN   = "align"
 FONT    = "font"
 
 //Tipo de Datos
-INT     = "Numero Entero"
-BOOLEA  = "Booleanpo"
-STRIN   = "Cadena"
-CARAC   = "Caracter"
-DOUBL   = "Numero Flotante"
+INT     = "int"
+BOOLEA  = "boolean"
+STRIN   = "String"
+CARAC   = "char"
+DOUBL   = "float"
 
 //reservadas
 RESUL  = "RESULT"
@@ -113,7 +113,7 @@ CLASE   = "clases"
 
 //expresiones
 ENTERO  = ("-")?[0-9]+
-ID      = [A-Za-zñÑ]([_0-9A-Za-zñÑ]*[0-9A-Za-zñÑ])
+ID      = [A-Za-zñÑ_]([_0-9A-Za-zñÑ])
 DECIMAL = {ENTERO}"."{ENTERO}
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
