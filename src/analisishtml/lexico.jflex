@@ -18,7 +18,7 @@ import java_cup.runtime.Symbol;
 %char
 %column
 %full
-%ignorecase
+%state CADENA
 
 //simbolos
 PAR_A   = "("
@@ -101,7 +101,7 @@ CARAC   = "Caracter"
 DOUBL   = "Numero Flotante"
 
 //reservadas
-RESULT  = "RESULT"
+RESUL  = "RESULT"
 PRINT   = "Print"
 SCORE   = "score"
 VARIA   = "variables"
@@ -117,7 +117,7 @@ DECIMAL = {ENTERO}"."{ENTERO}
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
 InputCharacter = [^\r\n]
-CADENA  = ("\"")?{InputCharacter}("\"")
+//CADENA  = "\""{InputCharacter}"\""
 COMENTM = "</" [^/] ~"/>/" | "/*" "/"+ ">"
 InputCharacter = [^\r\n]
 LineTerminator = \r|\n|\r\n
@@ -189,7 +189,7 @@ COMENTARIO = {COMENTL} | {COMENTM}
 <YYINITIAL> {TR_I}      { return new Symbol(sym.TR_I, yyline, yycolumn,yytext());}
 <YYINITIAL> {TR_F}      { return new Symbol(sym.TR_F, yyline, yycolumn,yytext());}
 <YYINITIAL> {TD_I}      { return new Symbol(sym.TD_I, yyline, yycolumn,yytext());}
-<YYINITIAL> {TD_F}      { return new Symbol(sym.TD_F, yyline, yycolumn,yytext());}S
+<YYINITIAL> {TD_F}      { return new Symbol(sym.TD_F, yyline, yycolumn,yytext());}
 <YYINITIAL> {DIV_I}     { return new Symbol(sym.DIV_I, yyline, yycolumn,yytext());}
 <YYINITIAL> {DIV_F}     { return new Symbol(sym.DIV_F, yyline, yycolumn,yytext());}
 <YYINITIAL> {P_I}       { return new Symbol(sym.P_I, yyline, yycolumn,yytext());}
@@ -209,6 +209,12 @@ COMENTARIO = {COMENTL} | {COMENTM}
 <YYINITIAL> {SCORE}     { return new Symbol(sym.SCORE, yyline, yycolumn,yytext());}
 <YYINITIAL> {METOD}     { return new Symbol(sym.METOD, yyline, yycolumn,yytext());}
 
+//atributos
+<YYINITIAL> {COLOR}     { return new Symbol(sym.COLOR, yyline, yycolumn,yytext());}
+<YYINITIAL> {TCOLOR}    { return new Symbol(sym.TCOLOR, yyline, yycolumn,yytext());}
+<YYINITIAL> {ALIGN}     { return new Symbol(sym.ALIGN, yyline, yycolumn,yytext());}
+<YYINITIAL> {FONT}      { return new Symbol(sym.FONT, yyline, yycolumn,yytext());}
+
 //expresiones
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
 <YYINITIAL> {DECIMAL}   { return new Symbol(sym.DECIMAL, yyline, yycolumn,yytext());}
@@ -216,10 +222,17 @@ COMENTARIO = {COMENTL} | {COMENTM}
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
 <YYINITIAL> {COMENTARIO} {return new Symbol(sym.COMENTARIO, yyline, yycolumn,yytext());}
-
+<YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);
         System.out.println(errLex);
 }
 
-<YYINITIAL> {CADENA}    {return new Symbol(sym.CADENA, yyline, yycolumn,yytext());}
+<CADENA> {
+        [\"] { String tmp=cadena+"\""; cadena=""; yybegin(YYINITIAL);  return new Symbol(sym.CADENA, yychar,yyline,tmp); }
+        [\n] {String tmp=cadena; cadena="";  
+                System.out.println("Se esperaba cierre de cadena (\")."); 
+                yybegin(YYINITIAL);
+            }
+        [^\"] { cadena+=yytext();}
+}

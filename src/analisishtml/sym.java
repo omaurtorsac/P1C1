@@ -8,71 +8,179 @@ package analisishtml;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int DOSPU = 7;
-  public static final int TIPOS = 16;
-  public static final int CARAC = 12;
-  public static final int BOOLEA = 10;
-  public static final int CADENA = 31;
-  public static final int INT = 9;
-  public static final int DECIMAL = 28;
-  public static final int LLAV_C = 3;
-  public static final int LLAV_A = 2;
-  public static final int STRIN = 11;
-  public static final int SCORE = 17;
-  public static final int COR_C = 5;
-  public static final int ENTER = 30;
-  public static final int ID = 27;
-  public static final int CLASE = 20;
-  public static final int SPACE = 29;
-  public static final int COR_A = 4;
-  public static final int COMA = 6;
-  public static final int METODO = 25;
-  public static final int NOMBRE = 21;
+  public static final int FALS = 25;
+  public static final int CLOSE = 20;
+  public static final int MODS = 16;
+  public static final int HEAD_I = 33;
+  public static final int HEAD_F = 34;
+  public static final int COR_C = 7;
+  public static final int COR_A = 6;
+  public static final int DIVIS = 15;
+  public static final int PYCOMA = 9;
+  public static final int TH_I = 53;
+  public static final int MAYOR = 17;
+  public static final int TH_F = 54;
+  public static final int SPACE = 78;
+  public static final int DOSPU = 10;
+  public static final int FONT = 85;
+  public static final int TD_I = 55;
+  public static final int TD_F = 56;
+  public static final int PAR_C = 3;
+  public static final int PAR_A = 2;
+  public static final int NOT = 23;
+  public static final int COMENTARIO = 81;
+  public static final int HTML_I = 31;
+  public static final int MULTI = 14;
+  public static final int HTML_F = 32;
+  public static final int BR_I = 63;
+  public static final int BR_F = 64;
+  public static final int H6_I = 47;
+  public static final int H6_F = 48;
+  public static final int H5_I = 45;
+  public static final int H5_F = 46;
+  public static final int COMA = 8;
+  public static final int ENTERO = 75;
+  public static final int H4_I = 43;
+  public static final int H4_F = 44;
+  public static final int DOUBL = 30;
+  public static final int METOD = 73;
+  public static final int H3_I = 41;
+  public static final int IGUAL = 19;
+  public static final int CLASE = 74;
+  public static final int H3_F = 42;
+  public static final int HR_I = 65;
+  public static final int ALIGN = 84;
+  public static final int DECIMAL = 77;
+  public static final int H2_I = 39;
+  public static final int HR_F = 66;
+  public static final int H2_F = 40;
+  public static final int H1_I = 37;
+  public static final int RESUL = 67;
+  public static final int H1_F = 38;
+  public static final int DIV_I = 59;
+  public static final int MENOR = 18;
+  public static final int CARAC = 29;
+  public static final int CANTI = 72;
+  public static final int DIV_F = 60;
+  public static final int TRU = 24;
+  public static final int INT = 26;
+  public static final int BOOLEA = 27;
+  public static final int TITLE_I = 49;
   public static final int EOF = 0;
-  public static final int OBJEC = 14;
-  public static final int DOUBL = 13;
-  public static final int PARAME = 24;
-  public static final int TEXTO = 23;
-  public static final int COMENT = 22;
+  public static final int TITLE_F = 50;
+  public static final int PUNTO = 11;
+  public static final int BODY_I = 35;
+  public static final int SUMA = 12;
+  public static final int PRINT = 68;
+  public static final int BODY_F = 36;
+  public static final int P_I = 61;
+  public static final int P_F = 62;
+  public static final int STRIN = 28;
+  public static final int LLAV_C = 5;
+  public static final int VARIA = 70;
+  public static final int LLAV_A = 4;
+  public static final int OR = 22;
   public static final int error = 1;
-  public static final int CLASES = 18;
-  public static final int ENTERO = 26;
-  public static final int VARIAB = 19;
-  public static final int VOID = 15;
-  public static final int COMIL = 8;
+  public static final int TABLE_I = 51;
+  public static final int ENTER = 79;
+  public static final int RESTA = 13;
+  public static final int TABLE_F = 52;
+  public static final int ID = 76;
+  public static final int COLOR = 82;
+  public static final int NOMBR = 71;
+  public static final int TR_I = 57;
+  public static final int TR_F = 58;
+  public static final int TCOLOR = 83;
+  public static final int CADENA = 80;
+  public static final int AND = 21;
+  public static final int SCORE = 69;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
+  "PAR_A",
+  "PAR_C",
   "LLAV_A",
   "LLAV_C",
   "COR_A",
   "COR_C",
   "COMA",
+  "PYCOMA",
   "DOSPU",
-  "COMIL",
+  "PUNTO",
+  "SUMA",
+  "RESTA",
+  "MULTI",
+  "DIVIS",
+  "MODS",
+  "MAYOR",
+  "MENOR",
+  "IGUAL",
+  "CLOSE",
+  "AND",
+  "OR",
+  "NOT",
+  "TRU",
+  "FALS",
   "INT",
   "BOOLEA",
   "STRIN",
   "CARAC",
   "DOUBL",
-  "OBJEC",
-  "VOID",
-  "TIPOS",
+  "HTML_I",
+  "HTML_F",
+  "HEAD_I",
+  "HEAD_F",
+  "BODY_I",
+  "BODY_F",
+  "H1_I",
+  "H1_F",
+  "H2_I",
+  "H2_F",
+  "H3_I",
+  "H3_F",
+  "H4_I",
+  "H4_F",
+  "H5_I",
+  "H5_F",
+  "H6_I",
+  "H6_F",
+  "TITLE_I",
+  "TITLE_F",
+  "TABLE_I",
+  "TABLE_F",
+  "TH_I",
+  "TH_F",
+  "TD_I",
+  "TD_F",
+  "TR_I",
+  "TR_F",
+  "DIV_I",
+  "DIV_F",
+  "P_I",
+  "P_F",
+  "BR_I",
+  "BR_F",
+  "HR_I",
+  "HR_F",
+  "RESUL",
+  "PRINT",
   "SCORE",
-  "CLASES",
-  "VARIAB",
+  "VARIA",
+  "NOMBR",
+  "CANTI",
+  "METOD",
   "CLASE",
-  "NOMBRE",
-  "COMENT",
-  "TEXTO",
-  "PARAME",
-  "METODO",
   "ENTERO",
   "ID",
   "DECIMAL",
   "SPACE",
   "ENTER",
-  "CADENA"
+  "CADENA",
+  "COMENTARIO",
+  "COLOR",
+  "TCOLOR",
+  "ALIGN",
+  "FONT"
   };
 }
 
