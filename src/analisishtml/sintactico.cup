@@ -67,8 +67,11 @@ nonterminal TEXTO, LENGUAJE, CAN;
 
 nonterminal DECLA, VALT, EXPRE, VAL2;
 
-nonterminal String VARIOS, RESULTADO, OPERACION, OTRO;
+nonterminal String VARIOS, RESULTADO, OPERACION, OTRO, LOGICO, LOGIC2;
 
+
+precedence left AND, OR, NOT;
+precedence left MAYOR, MENOR, IGUAL;
 precedence left SUMA, RESTA;
 precedence left MULTI, DIVIS, MODS;
 
@@ -125,9 +128,10 @@ TEXTO ::=   VALORES |
 
 LENGUAJE ::= CPREP CAN CPREP;
 
-CAN ::= DECLA CAN|;
+CAN ::= DECLA CAN| 
+        PRINT PAR_A EXPRE PAR_C CAN |;
 
-DECLA ::= VALT ID | VALT ID IGUAL EXPRE;
+DECLA ::= VALT ID PYCOMA| VALT ID IGUAL EXPRE PYCOMA;
 
 VALT ::= TIPO | ;
 
@@ -135,6 +139,8 @@ EXPRE ::=   RESTA EXPRE|
             PAR_A EXPRE PAR_C|
             EXPRE OPERACION EXPRE|
             NOT EXPRE|
+            EXPRE LOGICO EXPRE|
+            EXPRE LOGIC2 EXPRE|
             VAL2;
 
 OPERACION ::=   SUMA|
@@ -143,7 +149,16 @@ OPERACION ::=   SUMA|
                 DIVIS|
                 MODS;
 
-VAL2 ::=    VALORES | RESULTADO;
+LOGICO ::=  AND | OR;
+
+LOGIC2 ::=  MAYOR|
+            MENOR|
+            IGUAL IGUAL|
+            NOT IGUAL|
+            MAYOR IGUAL|
+            MENOR IGUAL;
+
+VAL2 ::=    VALORES VAL2| RESULTADO VAL2 |;
 
 RESULTADO ::=   RESUL PUNTO SCORE|
                 RESUL PUNTO OTRO|
@@ -153,7 +168,7 @@ RESULTADO ::=   RESUL PUNTO SCORE|
 
 OTRO ::=    VARIA| METOD | CLASE;
 
-VALORES ::= ENTERO| DECIMAL| ID| CADENA| CADENA2| error;
+VALORES ::= ENTERO| DECIMAL| ID| CADENA| CADENA2| FALS| TRU| error;
 
 TIPO ::=    INT|
             BOOLEA|
