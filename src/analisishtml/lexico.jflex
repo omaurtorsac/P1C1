@@ -202,14 +202,12 @@ COMENTARIO = {COMENTL} | {COMENTM}
 //reservadas
 <YYINITIAL> {RESUL}     { return new Symbol(sym.RESUL, yyline, yycolumn,yytext());}
 <YYINITIAL> {PRINT}     { return new Symbol(sym.PRINT, yyline, yycolumn,yytext());}
-<YYINITIAL> {CLASES}    { return new Symbol(sym.CLASES, yyline, yycolumn,yytext());}
-<YYINITIAL> {VARIAB}    { return new Symbol(sym.VARIAB, yyline, yycolumn,yytext());}
 <YYINITIAL> {CLASE}     { return new Symbol(sym.CLASE, yyline, yycolumn,yytext());}
-<YYINITIAL> {NOMBRE}    { return new Symbol(sym.NOMBRE, yyline, yycolumn,yytext());}
-<YYINITIAL> {COMENT}    { return new Symbol(sym.COMENT, yyline, yycolumn,yytext());}
-<YYINITIAL> {TEXTO}     { return new Symbol(sym.TEXTO, yyline, yycolumn,yytext());}
-<YYINITIAL> {PARAME}    { return new Symbol(sym.PARAME, yyline, yycolumn,yytext());}
-<YYINITIAL> {METODO}    { return new Symbol(sym.METODO, yyline, yycolumn,yytext());}
+<YYINITIAL> {VARIA}     { return new Symbol(sym.VARIA, yyline, yycolumn,yytext());}
+<YYINITIAL> {CANTI}     { return new Symbol(sym.CANTI, yyline, yycolumn,yytext());}
+<YYINITIAL> {NOMBR}     { return new Symbol(sym.NOMBR, yyline, yycolumn,yytext());}
+<YYINITIAL> {SCORE}     { return new Symbol(sym.SCORE, yyline, yycolumn,yytext());}
+<YYINITIAL> {METOD}     { return new Symbol(sym.METOD, yyline, yycolumn,yytext());}
 
 //expresiones
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
