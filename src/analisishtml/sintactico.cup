@@ -32,10 +32,11 @@ action code
 :}
 
 //simbolos
-terminal String LLAV_A, LLAV_C, COR_A, COR_C, COMA, DOSPU, COMIL;
+terminal String PAR_A, PAR_C, LLAV_A, LLAV_C, COR_A, COR_C, COMA, PYCOMA, DOSPU, PUNTO;
+terminal String SUMA, RESTA, MULTI DIVIS, MODS, MAYOR, MENOR, IGUAL, CLOSE;
 
 //Tipo de Datos
-terminal String INT, BOOLEA, STRIN, CARAC, DOUBL, OBJEC, VOID;
+terminal String INT, BOOLEA, STRIN, CARAC, DOUBL;
 
 //reservadas
 terminal String TIPOS, SCORE, CLASES, VARIAB, CLASE, NOMBRE, COMENT, TEXTO, PARAME, METODO;
@@ -51,7 +52,11 @@ nonterminal String C1, V1, M1, T1;
 
 nonterminal String C2, V2, M2, T2;
 
+precedence left SUMA, RESTA;
+precedence left MULTI, DIVIS, MODS;
+
 start with INICIO;
+
 
 INICIO ::= LLAV_A ESCORE COMA ECLASES COMA EVARIAB COMA EMETOD COMA ECOMEN LLAV_C;
 
@@ -95,6 +100,4 @@ TIPO ::=    INT|
             BOOLEA|
             STRIN|
             CARAC|
-            DOUBL|
-            OBJEC|
-            VOID|error;
+            DOUBL|error;
