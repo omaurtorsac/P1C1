@@ -147,12 +147,57 @@ COMENTARIO = {COMENTL} | {COMENTM}
 <YYINITIAL> {IGUAL}     { return new Symbol(sym.IGUAL, yyline, yycolumn,yytext());}
 <YYINITIAL> {CLOSE}     { return new Symbol(sym.CLOSE, yyline, yycolumn,yytext());}
 
+//logicos
+<YYINITIAL> {AND}       { return new Symbol(sym.AND, yyline, yycolumn,yytext());}
+<YYINITIAL> {OR}        { return new Symbol(sym.OR, yyline, yycolumn,yytext());}
+<YYINITIAL> {NOT}       { return new Symbol(sym.NOT, yyline, yycolumn,yytext());}
+<YYINITIAL> {TRU}       { return new Symbol(sym.TRU, yyline, yycolumn,yytext());}
+<YYINITIAL> {FALS}      { return new Symbol(sym.FALS, yyline, yycolumn,yytext());}
+
 //Tipo de Datos
 <YYINITIAL> {INT}       { return new Symbol(sym.INT, yyline, yycolumn,yytext());}
 <YYINITIAL> {BOOLEA}    { return new Symbol(sym.BOOLEA, yyline, yycolumn,yytext());}
 <YYINITIAL> {STRIN}     { return new Symbol(sym.STRIN, yyline, yycolumn,yytext());}
 <YYINITIAL> {CARAC}     { return new Symbol(sym.CARAC, yyline, yycolumn,yytext());}
 <YYINITIAL> {DOUBL}     { return new Symbol(sym.DOUBL, yyline, yycolumn,yytext());}
+
+//etiquetas
+<YYINITIAL> {HTML_I}    { return new Symbol(sym.HTML_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {HTML_F}    { return new Symbol(sym.HTML_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {HEAD_I}    { return new Symbol(sym.HEAD_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {HEAD_F}    { return new Symbol(sym.HEAD_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {BODY_I}    { return new Symbol(sym.BODY_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {BODY_F}    { return new Symbol(sym.BODY_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {H1_I}      { return new Symbol(sym.H1_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {H1_F}      { return new Symbol(sym.H1_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {H2_I}      { return new Symbol(sym.H2_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {H2_F}      { return new Symbol(sym.H2_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {H3_I}      { return new Symbol(sym.H3_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {H3_F}      { return new Symbol(sym.H3_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {H4_I}      { return new Symbol(sym.H4_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {H4_F}      { return new Symbol(sym.H4_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {H5_I}      { return new Symbol(sym.H5_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {H5_F}      { return new Symbol(sym.H5_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {H6_I}      { return new Symbol(sym.H6_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {H6_F}      { return new Symbol(sym.H6_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {TITLE_I}   { return new Symbol(sym.TITLE_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {TITLE_F}   { return new Symbol(sym.TITLE_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {TABLE_I}   { return new Symbol(sym.TABLE_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {TABLE_F}   { return new Symbol(sym.TABLE_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {TH_I}      { return new Symbol(sym.TH_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {TH_F}      { return new Symbol(sym.TH_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {TR_I}      { return new Symbol(sym.TR_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {TR_F}      { return new Symbol(sym.TR_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {TD_I}      { return new Symbol(sym.TD_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {TD_F}      { return new Symbol(sym.TD_F, yyline, yycolumn,yytext());}S
+<YYINITIAL> {DIV_I}     { return new Symbol(sym.DIV_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {DIV_F}     { return new Symbol(sym.DIV_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {P_I}       { return new Symbol(sym.P_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {P_F}       { return new Symbol(sym.P_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {BR_I}      { return new Symbol(sym.BR_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {BR_F}      { return new Symbol(sym.BR_F, yyline, yycolumn,yytext());}
+<YYINITIAL> {HR_I}      { return new Symbol(sym.HR_I, yyline, yycolumn,yytext());}
+<YYINITIAL> {HR_F}      { return new Symbol(sym.HR_F, yyline, yycolumn,yytext());}
 
 //reservadas
 <YYINITIAL> {RESUL}     { return new Symbol(sym.RESUL, yyline, yycolumn,yytext());}

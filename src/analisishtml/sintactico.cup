@@ -35,8 +35,16 @@ action code
 terminal String PAR_A, PAR_C, LLAV_A, LLAV_C, COR_A, COR_C, COMA, PYCOMA, DOSPU, PUNTO;
 terminal String SUMA, RESTA, MULTI DIVIS, MODS, MAYOR, MENOR, IGUAL, CLOSE;
 
+//logicos
+terminal String AND, OR, NOT, TRU, FALS;
+
 //Tipo de Datos
 terminal String INT, BOOLEA, STRIN, CARAC, DOUBL;
+
+//etiquetas
+terminal String HTML_I, HTML_F, HEAD_I, HEAD_F, BODY_I, BODY_F, H1_I, H1_F, H2_I, H2_F, H3_I, H3_F;
+terminal String H4_I, H4_F, H5_I, H5_F, H6_I, H6_F, TITLE_I, TITLE_F, TABLE_I, TABLE_F, TH_I, TH_F;
+terminal String TD_I, TD_F, TR_I, TR_F, DIV_I, DIV_F, P_I, P_F, BR_I, BR_F, HR_I, HR_F;
 
 //reservadas
 terminal String TIPOS, SCORE, CLASES, VARIAB, CLASE, NOMBRE, COMENT, TEXTO, PARAME, METODO;
