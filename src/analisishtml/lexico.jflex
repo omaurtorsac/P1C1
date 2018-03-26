@@ -40,6 +40,7 @@ MAYOR   = ">"
 MENOR   = "<"
 IGUAL   = "="
 CLOSE   = "/>"
+CPREP   = "$$"
 
 //logicos
 TRU     = "true"
@@ -117,7 +118,7 @@ DECIMAL = {ENTERO}"."{ENTERO}
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
 InputCharacter = [^\r\n]
-//CADENA  = "\""{InputCharacter}"\""
+CADENA2  = [0-9A-Za-zñÑ_]([0-9A-Za-zñÑ_]|" ")+
 COMENTM = "</" [^/] ~"/>/" | "/*" "/"+ ">"
 InputCharacter = [^\r\n]
 LineTerminator = \r|\n|\r\n
@@ -146,7 +147,7 @@ COMENTARIO = {COMENTL} | {COMENTM}
 <YYINITIAL> {MENOR}     { return new Symbol(sym.MENOR, yyline, yycolumn,yytext());}
 <YYINITIAL> {IGUAL}     { return new Symbol(sym.IGUAL, yyline, yycolumn,yytext());}
 <YYINITIAL> {CLOSE}     { return new Symbol(sym.CLOSE, yyline, yycolumn,yytext());}
-
+<YYINITIAL> {CPREP}     { return new Symbol(sym.CPREP, yyline, yycolumn,yytext());}
 //logicos
 <YYINITIAL> {AND}       { return new Symbol(sym.AND, yyline, yycolumn,yytext());}
 <YYINITIAL> {OR}        { return new Symbol(sym.OR, yyline, yycolumn,yytext());}
@@ -222,6 +223,7 @@ COMENTARIO = {COMENTL} | {COMENTM}
 <YYINITIAL> {SPACE}     { /*Espacios en blanco, ignorados*/ }
 <YYINITIAL> {ENTER}     { /*Saltos de linea, ignorados*/}
 <YYINITIAL> {COMENTARIO} {return new Symbol(sym.COMENTARIO, yyline, yycolumn,yytext());}
+<YYINITIAL> {CADENA2}   {return new Symbol(sym.CADENA2, yyline, yycolumn,yytext());}
 <YYINITIAL> [\"]        { yybegin(CADENA); cadena+="\""; }
 <YYINITIAL> . {
         String errLex = "Error léxico : '"+yytext()+"' en la línea: "+(yyline+1)+" y columna: "+(yycolumn+1);
@@ -236,3 +238,4 @@ COMENTARIO = {COMENTL} | {COMENTM}
             }
         [^\"] { cadena+=yytext();}
 }
+

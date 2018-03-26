@@ -22,7 +22,7 @@ public class sym {
   public static final int TH_F = 54;
   public static final int SPACE = 78;
   public static final int DOSPU = 10;
-  public static final int FONT = 85;
+  public static final int FONT = 86;
   public static final int TD_I = 55;
   public static final int TD_F = 56;
   public static final int PAR_C = 3;
@@ -49,7 +49,7 @@ public class sym {
   public static final int CLASE = 74;
   public static final int H3_F = 42;
   public static final int HR_I = 65;
-  public static final int ALIGN = 84;
+  public static final int ALIGN = 85;
   public static final int DECIMAL = 77;
   public static final int H2_I = 39;
   public static final int HR_F = 66;
@@ -86,12 +86,13 @@ public class sym {
   public static final int RESTA = 13;
   public static final int TABLE_F = 52;
   public static final int ID = 76;
-  public static final int COLOR = 82;
+  public static final int COLOR = 83;
   public static final int NOMBR = 71;
   public static final int TR_I = 57;
   public static final int TR_F = 58;
-  public static final int TCOLOR = 83;
+  public static final int TCOLOR = 84;
   public static final int CADENA = 80;
+  public static final int CADENA2 = 82;
   public static final int AND = 21;
   public static final int SCORE = 69;
   public static final String[] terminalNames = new String[] {
@@ -177,6 +178,7 @@ public class sym {
   "ENTER",
   "CADENA",
   "COMENTARIO",
+  "CADENA2",
   "COLOR",
   "TCOLOR",
   "ALIGN",
