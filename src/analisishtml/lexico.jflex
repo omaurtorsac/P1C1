@@ -113,12 +113,12 @@ CLASE   = "clases"
 
 //expresiones
 ENTERO  = ("-")?[0-9]+
-ID      = [A-Za-zñÑ_]([_0-9A-Za-zñÑ])
+ID      = [A-Za-zñÑ_]([_0-9A-Za-zñÑ])+
 DECIMAL = {ENTERO}"."{ENTERO}
 SPACE   = [\ \r\t\f\t]
 ENTER   = [\ \n]
 InputCharacter = [^\r\n]
-CADENA2  = [0-9A-Za-zñÑ_]([0-9A-Za-zñÑ_]|" ")+
+CADENA2  =  [0-9A-Za-zñÑ_]([0-9A-Za-zñÑ_]|" ")+
 COMENTM = "</" [^/] ~"/>/" | "/*" "/"+ ">"
 InputCharacter = [^\r\n]
 LineTerminator = \r|\n|\r\n
