@@ -49,6 +49,7 @@ COMENT  = "Comentarios"
 TEXTO   = "Texto"
 PARAME  = "Parametros"
 METODO  = "Metodos"
+FUNCION = "funcion"
 
 //expresiones
 ENTERO  = ("\"")?("-")?[0-9]+("\"")?
@@ -87,6 +88,7 @@ ENTER   = [\ \n]
 <YYINITIAL> {TEXTO}     { return new Symbol(sym.TEXTO, yyline, yycolumn,yytext());}
 <YYINITIAL> {PARAME}    { return new Symbol(sym.PARAME, yyline, yycolumn,yytext());}
 <YYINITIAL> {METODO}    { return new Symbol(sym.METODO, yyline, yycolumn,yytext());}
+<YYINITIAL> {FUNCION}   { return new Symbol(sym.FUNCION, yyline, yycolumn,yytext());}
 
 //expresiones
 <YYINITIAL> {ENTERO}    { return new Symbol(sym.ENTERO, yyline, yycolumn,yytext());}
